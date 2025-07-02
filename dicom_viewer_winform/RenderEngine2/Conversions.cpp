@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Conversions.h"
 
 void ConvertMatrix(Matrix^ sourceMatrix, double targetMatrix[16])

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -13,14 +13,6 @@
     <PackageReference Include="fo-dicom" Version="5.2.2" />
     <PackageReference Include="fo-dicom.Imaging.Desktop" Version="5.2.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\dicom_viewer_winform\Entities\Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Entities\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>
