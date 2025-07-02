@@ -6,6 +6,8 @@ namespace dicom_viewer_winform
 {
     public partial class DicomViewerForm : Form
     {
+        private Entities.DicomSeries? currentSeries;
+
         public DicomViewerForm()
         {
             InitializeComponent();
@@ -31,7 +33,31 @@ namespace dicom_viewer_winform
                     var bitmap = rendered.AsClonedBitmap();
                     pictureBox1.Image?.Dispose();
                     pictureBox1.Image = bitmap;
+                    currentSeries = firstSeries;
                 }
+            }
+        }
+
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            if (currentSeries != null && currentSeries.FileNames.Count > 0)
+            {
+                var middleFile = currentSeries.FileNames[currentSeries.FileNames.Count / 2];
+                var dicomImage = new FellowOakDicom.Imaging.DicomImage(middleFile);
+                var frame = dicomImage.NumberOfFrames > 1 ? dicomImage.NumberOfFrames / 2 : 0;
+                using var rendered = dicomImage.RenderImage(frame);
+                var bitmap = rendered.AsClonedBitmap();
+                pictureBox1.Image?.Dispose();
+                pictureBox1.Image = bitmap;
+            }
+        }
+
+        private void buttonMpr_Click(object sender, EventArgs e)
+        {
+            if (currentSeries?.Volume != null)
+            {
+                using var form = new MprViewerForm(currentSeries.Volume);
+                form.ShowDialog(this);
             }
         }
     }
