@@ -1,4 +1,4 @@
-using Dicom;
+using FellowOakDicom;
 using System.Collections.Generic;
 
 namespace dicom_viewer_winform.Entities
