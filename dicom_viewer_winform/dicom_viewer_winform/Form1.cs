@@ -1,3 +1,5 @@
+using Dicom.Imaging;
+
 namespace dicom_viewer_winform
 {
     public partial class Form1 : Form
@@ -5,6 +7,29 @@ namespace dicom_viewer_winform
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            using var dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxPath.Text = dialog.SelectedPath;
+
+                var loader = new DataSetSelector();
+                loader.OpenFolder(dialog.SelectedPath);
+
+                if (loader.FileNames.Count > 0)
+                {
+                    var middleFile = loader.FileNames[loader.FileNames.Count / 2];
+                    var dicomImage = new DicomImage(middleFile);
+                    var frame = dicomImage.NumberOfFrames > 1 ? dicomImage.NumberOfFrames / 2 : 0;
+                    using var rendered = dicomImage.RenderImage(frame);
+                    var bitmap = rendered.AsClonedBitmap();
+                    pictureBox1.Image?.Dispose();
+                    pictureBox1.Image = bitmap;
+                }
+            }
         }
     }
 }
