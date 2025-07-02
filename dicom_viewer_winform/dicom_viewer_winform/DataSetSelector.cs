@@ -50,6 +50,12 @@ namespace dicom_viewer_winform
                 return;
             }
 
+            foreach (var s in series.OfType<DicomSeries>())
+            {
+                var scan = DicomVolumeLoader.Load(s);
+                s.Volume = scan?.Volume;
+            }
+
             Series = series;
         }
     }
