@@ -6,25 +6,25 @@ namespace dicom_viewer_winform
     internal static class Program
     {
         /// <summary>
-        /// ¾ÖÇÃ¸®ÄÉÀÌ¼Ç ÁøÀÔÁ¡:
-        /// fo-dicom ÄÚ¾î ¼­ºñ½º¿Í WinForms ÀÌ¹ÌÁö ¸Å´ÏÀú¸¦ µî·ÏÇÑ ÈÄ
-        /// ÆûÀ» ½ÇÇàÇÕ´Ï´Ù.
+            Application.Run(new DicomViewerForm());
+        /// fo-dicom ì½”ì–´ ì„œë¹„ìŠ¤ì™€ WinForms ì´ë¯¸ì§€ ë§¤ë‹ˆì €ë¥¼ ë“±ë¡í•œ í›„
+        /// í¼ì„ ì‹¤í–‰í•©ë‹ˆë‹¤.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // fo-dicom ¼­ºñ½º ÃÊ±âÈ­ ¹× WinForms ·»´õ·¯ µî·Ï
+            // fo-dicom ì„œë¹„ìŠ¤ ì´ˆê¸°í™” ë° WinForms ë Œë”ëŸ¬ ë“±ë¡
             new DicomSetupBuilder()
                 .RegisterServices(services => services
-                    .AddFellowOakDicom()                  // DICOM ÄÚ¾î
-                    .AddImageManager<WinFormsImageManager>() // WinForms¿ë ÀÌ¹ÌÁö ¸Å´ÏÀú
+                    .AddFellowOakDicom()                  // DICOM ì½”ì–´
+                    .AddImageManager<WinFormsImageManager>() // WinFormsìš© ì´ë¯¸ì§€ ë§¤ë‹ˆì €
                 )
                 .Build();
 
-            // Windows Forms ±¸¼º ÃÊ±âÈ­
+            // Windows Forms êµ¬ì„± ì´ˆê¸°í™”
             ApplicationConfiguration.Initialize();
 
-            // ¸ŞÀÎ Æû ½ÇÇà
+            // ë©”ì¸ í¼ ì‹¤í–‰
             Application.Run(new Form1());
         }
     }

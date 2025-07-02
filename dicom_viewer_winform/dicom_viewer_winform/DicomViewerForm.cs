@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace dicom_viewer_winform
 {
-    public partial class Form1 : Form
+    public partial class DicomViewerForm : Form
     {
-        public Form1()
+        public DicomViewerForm()
         {
             InitializeComponent();
         }
