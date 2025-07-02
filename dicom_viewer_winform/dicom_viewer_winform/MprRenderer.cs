@@ -72,6 +72,22 @@ namespace dicom_viewer_winform
             return bmp;
         }
 
+        private static Bitmap ResizeBitmap(Bitmap bitmap, int width, int height)
+        {
+            if (width == bitmap.Width && height == bitmap.Height)
+            {
+                return bitmap;
+            }
+            var resized = new Bitmap(width, height);
+            using (var g = Graphics.FromImage(resized))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.DrawImage(bitmap, 0, 0, width, height);
+            }
+            bitmap.Dispose();
+            return resized;
+        }
+
         public static Bitmap GenerateAxial(ImageSet volume)
         {
             if (volume.Slices.Count == 0) return new Bitmap(1,1);
@@ -104,7 +120,11 @@ namespace dicom_viewer_winform
                     result[y * widthOut + z] = slicePixels[y * volume.Dimensions.X + xIndex];
                 }
             }
-            return CreateBitmap(result, widthOut, heightOut);
+            var bmp = CreateBitmap(result, widthOut, heightOut);
+            var scale = volume.VoxelSpacing.Z / volume.VoxelSpacing.Y;
+            var newWidth = (int)Math.Round(widthOut * scale);
+            if (newWidth < 1) newWidth = 1;
+            return ResizeBitmap(bmp, newWidth, heightOut);
         }
 
         public static Bitmap GenerateCoronal(ImageSet volume)
@@ -128,7 +148,11 @@ namespace dicom_viewer_winform
                     result[z * widthOut + x] = slicePixels[yIndex * volume.Dimensions.X + x];
                 }
             }
-            return CreateBitmap(result, widthOut, heightOut);
+            var bmp = CreateBitmap(result, widthOut, heightOut);
+            var scale = volume.VoxelSpacing.Z / volume.VoxelSpacing.X;
+            var newHeight = (int)Math.Round(heightOut * scale);
+            if (newHeight < 1) newHeight = 1;
+            return ResizeBitmap(bmp, widthOut, newHeight);
         }
     }
 }
