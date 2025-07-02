@@ -1,6 +1,6 @@
 ﻿namespace dicom_viewer_winform
 {
-    partial class Form1
+    partial class DicomViewerForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -70,7 +70,7 @@
             this.textBoxPath.Size = new System.Drawing.Size(676, 27);
             this.textBoxPath.TabIndex = 1;
             // 
-            // Form1
+            // DicomViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,8 +78,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBoxPath);
             this.Controls.Add(this.buttonOpen);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "DicomViewerForm";
+            this.Text = "DICOM Viewer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
