@@ -124,6 +124,15 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="RenderEngine2.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Conversions.h" />
+    <ClInclude Include="ImageSetReaderFactory.h" />
+    <ClInclude Include="ImageVisual.h" />
+    <ClInclude Include="IVisual.h" />
+    <ClInclude Include="SlabAxesVisual.h" />
+    <ClInclude Include="SlabVisual.h" />
+    <ClInclude Include="ViewportRenderer.h" />
+    <ClInclude Include="VolumeVisual.h" />
+    <ClInclude Include="vtkMemoryImageReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -133,6 +142,15 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+        <ClCompile Include="Conversions.cpp" />
+    <ClCompile Include="ImageSetReaderFactory.cpp" />
+    <ClCompile Include="ImageVisual.cpp" />
+    <ClCompile Include="IVisual.cpp" />
+    <ClCompile Include="SlabAxesVisual.cpp" />
+    <ClCompile Include="SlabVisual.cpp" />
+    <ClCompile Include="ViewportRenderer.cpp" />
+    <ClCompile Include="VolumeVisual.cpp" />
+    <ClCompile Include="vtkMemoryImageReader.cpp" />
     <ClCompile Include="RenderEngine2.cpp" />
   </ItemGroup>
   <ItemGroup>

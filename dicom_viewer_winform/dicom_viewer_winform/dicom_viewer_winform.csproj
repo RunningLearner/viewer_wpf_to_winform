@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RenderEngine\RenderEngine.vcxproj" />
+    <ProjectReference Include="..\RenderEngine2\RenderEngine2.vcxproj" />
   </ItemGroup>
 
 </Project>
