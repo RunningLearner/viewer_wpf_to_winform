@@ -1,4 +1,6 @@
-﻿namespace Entities
+﻿using dicom_viewer_winform.Entities;
+
+namespace Entities
 {
     public class Direction
     {

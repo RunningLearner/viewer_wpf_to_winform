@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dicom_viewer_winform.Entities;
+
+using System;
 
 namespace Entities
 {
