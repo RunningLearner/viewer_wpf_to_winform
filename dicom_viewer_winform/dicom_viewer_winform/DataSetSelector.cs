@@ -1,4 +1,4 @@
-using Entities;
+using dicom_viewer_winform.Entities;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,8 +9,8 @@ namespace dicom_viewer_winform
 {
     /// <summary>
     /// Simplified dataset loader inspired by the WPF DataSetSelector.
-    /// Loads DICOM series from a folder or file using the existing
-    /// DicomSeriesExtractor utilities.
+    /// Loads DICOM series from a folder or file using a simplified
+    /// DICOM series extractor that does not rely on the WPF solution.
     /// </summary>
     public class DataSetSelector
     {
@@ -28,19 +28,19 @@ namespace dicom_viewer_winform
             if (Directory.Exists(path))
             {
                 _logger.LogInformation("User opened directory");
-                series = DicomViewer.IO.DicomSeriesExtractor.ExtractSeriesFromDirectory(path);
+                series = SimpleDicomSeriesExtractor.ExtractSeriesFromDirectory(path);
             }
             else
             {
                 if (string.Compare(Path.GetFileName(path), "DICOMDIR", true, CultureInfo.InvariantCulture) == 0)
                 {
                     _logger.LogInformation("Opened dicomdir");
-                    series = DicomViewer.IO.DicomSeriesExtractor.ExtractSeriesFromDicomDir(path);
+                    series = SimpleDicomSeriesExtractor.ExtractSeriesFromDicomDir(path);
                 }
                 else
                 {
                     _logger.LogInformation("Opened single dicom file");
-                    series = DicomViewer.IO.DicomSeriesExtractor.ExtractSeriesFromSingleFile(path);
+                    series = SimpleDicomSeriesExtractor.ExtractSeriesFromSingleFile(path);
                 }
             }
 
