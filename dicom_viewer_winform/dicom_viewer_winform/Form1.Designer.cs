@@ -41,7 +41,7 @@
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(94, 29);
             this.buttonOpen.TabIndex = 0;
-            this.buttonOpen.Text = "Open";
+            this.buttonOpen.Text = "Open Folder";
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 

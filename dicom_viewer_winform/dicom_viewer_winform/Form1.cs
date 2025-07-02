@@ -9,12 +9,15 @@ namespace dicom_viewer_winform
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            using var dialog = new OpenFileDialog();
-            dialog.Filter = "All files (*.*)|*.*";
+            using var dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                textBoxPath.Text = dialog.FileName;
-                // TODO: load the selected file using WPF components
+                textBoxPath.Text = dialog.SelectedPath;
+
+                var loader = new DataSetSelector();
+                loader.Open(dialog.SelectedPath);
+                // In a full implementation the loaded series would be
+                // displayed using embedded WPF controls.
             }
         }
     }
