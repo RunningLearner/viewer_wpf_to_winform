@@ -60,5 +60,14 @@ namespace dicom_viewer_winform
                 form.ShowDialog(this);
             }
         }
+
+        private void buttonMprVtk_Click(object sender, EventArgs e)
+        {
+            if (currentSeries?.Volume != null)
+            {
+                using var form = new MprVtkViewerForm(currentSeries.Volume);
+                form.ShowDialog(this);
+            }
+        }
     }
 }
