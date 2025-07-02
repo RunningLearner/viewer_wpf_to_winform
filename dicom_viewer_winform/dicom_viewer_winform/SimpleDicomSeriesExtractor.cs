@@ -1,5 +1,5 @@
 using FellowOakDicom;
-using dicom_viewer_winform.Entities;
+using Entities;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

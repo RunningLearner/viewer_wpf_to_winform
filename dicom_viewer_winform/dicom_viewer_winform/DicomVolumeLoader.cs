@@ -1,8 +1,8 @@
-﻿using FellowOakDicom;
+using FellowOakDicom;
 using FellowOakDicom.Imaging;
 using FellowOakDicom.Imaging.Codec;
 using FellowOakDicom.Imaging.Render;
-using dicom_viewer_winform.Entities;
+using Entities;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

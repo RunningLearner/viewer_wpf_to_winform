@@ -23,7 +23,7 @@ namespace dicom_viewer_winform
                 var loader = new DataSetSelector();
                 loader.Open(dialog.SelectedPath);
 
-                var firstSeries = loader.Series?.FirstOrDefault() as dicom_viewer_winform.Entities.DicomSeries;
+                var firstSeries = loader.Series?.FirstOrDefault() as Entities.DicomSeries;
                 if (firstSeries != null && firstSeries.FileNames.Count > 0)
                 {
                     var middleFile = firstSeries.FileNames[firstSeries.FileNames.Count / 2];

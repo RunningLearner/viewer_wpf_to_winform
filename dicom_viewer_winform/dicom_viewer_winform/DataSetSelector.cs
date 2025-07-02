@@ -1,4 +1,4 @@
-using dicom_viewer_winform.Entities;
+using Entities;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Globalization;

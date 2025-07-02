@@ -1,4 +1,4 @@
-﻿namespace dicom_viewer_winform
+namespace dicom_viewer_winform
 {
     partial class DicomViewerForm
     {

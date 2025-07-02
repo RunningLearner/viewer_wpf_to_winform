@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using dicom_viewer_winform.Entities;
+using Entities;
 
 namespace dicom_viewer_winform
 {
