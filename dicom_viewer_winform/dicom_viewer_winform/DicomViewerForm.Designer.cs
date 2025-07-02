@@ -31,6 +31,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Button buttonMpr;
+        private System.Windows.Forms.Button buttonMprVtk;
 
         private void InitializeComponent()
         {
@@ -39,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonHome = new System.Windows.Forms.Button();
             this.buttonMpr = new System.Windows.Forms.Button();
+            this.buttonMprVtk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +76,17 @@
             this.buttonMpr.UseVisualStyleBackColor = true;
             this.buttonMpr.Click += new System.EventHandler(this.buttonMpr_Click);
             //
+            // buttonMprVtk
+            //
+            this.buttonMprVtk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonMprVtk.Location = new System.Drawing.Point(212, 415);
+            this.buttonMprVtk.Name = "buttonMprVtk";
+            this.buttonMprVtk.Size = new System.Drawing.Size(94, 29);
+            this.buttonMprVtk.TabIndex = 5;
+            this.buttonMprVtk.Text = "MPR VTK";
+            this.buttonMprVtk.UseVisualStyleBackColor = true;
+            this.buttonMprVtk.Click += new System.EventHandler(this.buttonMprVtk_Click);
+            //
             // pictureBox1
             //
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -101,6 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonMprVtk);
             this.Controls.Add(this.buttonMpr);
             this.Controls.Add(this.buttonHome);
             this.Controls.Add(this.pictureBox1);
