@@ -1,6 +1,6 @@
 using System.Drawing;
 using System.Windows.Forms;
-using dicom_viewer_winform.Entities;
+using Entities;
 
 namespace dicom_viewer_winform
 {

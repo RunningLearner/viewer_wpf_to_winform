@@ -2,7 +2,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using dicom_viewer_winform.Entities;
+using Entities;
 using RenderEngine;
 
 namespace dicom_viewer_winform
