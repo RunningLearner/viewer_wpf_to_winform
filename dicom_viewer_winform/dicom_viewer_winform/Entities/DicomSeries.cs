@@ -7,5 +7,6 @@ namespace dicom_viewer_winform.Entities
     {
         public List<DicomFile> Files { get; } = new();
         public List<string> FileNames { get; } = new();
+        public ImageSet? Volume { get; set; }
     }
 }
