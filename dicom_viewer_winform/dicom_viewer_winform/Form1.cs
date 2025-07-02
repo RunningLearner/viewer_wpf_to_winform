@@ -6,5 +6,16 @@ namespace dicom_viewer_winform
         {
             InitializeComponent();
         }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            using var dialog = new OpenFileDialog();
+            dialog.Filter = "All files (*.*)|*.*";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxPath.Text = dialog.FileName;
+                // TODO: load the selected file using WPF components
+            }
+        }
     }
 }
