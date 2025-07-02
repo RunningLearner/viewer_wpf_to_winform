@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entities;
+
+using System;
 using System.Runtime.InteropServices;
 
 namespace dicom_viewer_winform.Entities

@@ -1,12 +1,13 @@
-﻿using Dicom;
-using Dicom.Imaging;
-using Dicom.Imaging.Codec;
-using Dicom.Imaging.Render;
+﻿using FellowOakDicom;
+using FellowOakDicom.Imaging;
+using FellowOakDicom.Imaging.Codec;
+using FellowOakDicom.Imaging.Render;
 using dicom_viewer_winform.Entities;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Entities;
 
 namespace dicom_viewer_winform
 {
@@ -189,22 +190,30 @@ namespace dicom_viewer_winform
         private static Scan Load(DicomFile dicomFile)
         {
             var dataSet = dicomFile.Dataset;
-            var sopclass = dataSet.GetValueOrDefault(DicomTag.SOPClassUID, 0, string.Empty);
+            var sopClassUid = dataSet.GetValueOrDefault(DicomTag.SOPClassUID, 0, string.Empty);
 
-            switch(sopclass)
+            // X-Ray 3D Angiographic Image Storage
+            if (sopClassUid == DicomUID.XRay3DAngiographicImageStorage.UID)
             {
-                case DicomSopClasses.XA3DImageStorageSopClass:
-                    return LoadXA3DImageStorage(dicomFile);
-                case DicomSopClasses.EnhancedMRImageStorageSopClass:
-                    return LoadEnhancedMRImage(dicomFile);
-                case DicomSopClasses.MRImageStorageSopClass:
-                case DicomSopClasses.XRayAngiographicImageStorageSopClass:
-                    return Load(new List<DicomFile> { dicomFile });
-                default:
-                    logger.LogWarning($"Unsupported sop class: {sopclass}");
-                    break;
-            };            
-            return null;
+                return LoadXA3DImageStorage(dicomFile);
+            }
+            // Enhanced MR Image Storage
+            else if (sopClassUid == DicomUID.EnhancedMRImageStorage.UID)
+            {
+                return LoadEnhancedMRImage(dicomFile);
+            }
+            // MR Image Storage 또는 X-Ray Angiographic Image Storage
+            else if (sopClassUid == DicomUID.MRImageStorage.UID ||
+                     sopClassUid == DicomUID.XRayAngiographicImageStorage.UID)
+            {
+                return Load(new List<DicomFile> { dicomFile });
+            }
+            // 그 외
+            else
+            {
+                logger.LogWarning($"Unsupported SOP Class UID: {sopClassUid}");
+                return null;
+            }
         }
 
         private static Scan LoadEnhancedMRImage(DicomFile dicomFile)
@@ -267,11 +276,10 @@ namespace dicom_viewer_winform
                 var dataSet = file.Dataset;
                 var sopclass = dataSet.GetValueOrDefault(DicomTag.SOPClassUID, 0, string.Empty);
 
-                if (
-                    sopclass == DicomSopClasses.CTImageStorageSopClass ||
-                    sopclass == DicomSopClasses.MRImageStorageSopClass ||
-                    sopclass == DicomSopClasses.EnhancedMRImageStorageSopClass ||
-                    sopclass == DicomSopClasses.XRayAngiographicImageStorageSopClass)
+                if (sopclass == DicomUID.CTImageStorage.UID ||
+                    sopclass == DicomUID.MRImageStorage.UID ||
+                    sopclass == DicomUID.EnhancedMRImageStorage.UID ||
+                    sopclass == DicomUID.XRayAngiographicImageStorage.UID)
                 {
                     var dicomPixelData = DicomPixelData.Create(dataSet);
                     var nrFrames = dicomPixelData.NumberOfFrames;

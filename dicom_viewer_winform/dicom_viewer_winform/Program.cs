@@ -6,7 +6,6 @@ namespace dicom_viewer_winform
     internal static class Program
     {
         /// <summary>
-            Application.Run(new DicomViewerForm());
         /// fo-dicom 코어 서비스와 WinForms 이미지 매니저를 등록한 후
         /// 폼을 실행합니다.
         /// </summary>
@@ -25,7 +24,7 @@ namespace dicom_viewer_winform
             ApplicationConfiguration.Initialize();
 
             // 메인 폼 실행
-            Application.Run(new Form1());
+            Application.Run(new DicomViewerForm());
         }
     }
 }
