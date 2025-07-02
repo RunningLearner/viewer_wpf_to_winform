@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RenderEngine2\RenderEngine2.vcxproj" />
+    <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
 </Project>
